@@ -157,7 +157,7 @@ export default function NutellaPage() {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Preguiçosos
+            Conteúdo Nutella
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
             Dicas rápidas, práticas e direto ao ponto. Conteúdo fácil de consumir 
@@ -187,7 +187,7 @@ export default function NutellaPage() {
           </div>
         </div>
 
-        {/* Características dos Preguiçosos */}
+        {/* Características do Conteúdo Nutella */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           <Card className="text-center p-6 bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-950/20 dark:to-rose-950/20 border-pink-200 dark:border-pink-800">
             <Zap className="w-12 h-12 text-pink-500 mx-auto mb-4" />

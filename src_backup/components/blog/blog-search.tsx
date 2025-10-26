@@ -135,7 +135,7 @@ export default function BlogSearch({ posts, onFilteredPosts, categories, allTags
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
-              Nerds
+              Conteúdo Raiz
             </button>
             <button
               onClick={() => setContentType('nutella')}
@@ -145,7 +145,7 @@ export default function BlogSearch({ posts, onFilteredPosts, categories, allTags
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
-              Preguiçosos
+              Conteúdo Nutella
             </button>
           </div>
         </div>

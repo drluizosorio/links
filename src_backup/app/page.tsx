@@ -6,7 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { StructuredData, drLuizPersonSchema, websiteSchema } from "@/components/structured-data"
 import Link from "next/link"
-import Image from "next/image"
 import { 
   Stethoscope, 
   Heart, 
@@ -15,8 +14,9 @@ import {
   BookOpen, 
   Users, 
   Instagram,
+  Linkedin,
+  Youtube,
   Mail,
-  MessageCircle,
   Calendar,
   Sparkles,
   Target,
@@ -48,29 +48,50 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
         
         <div className="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
-          {/* Header com Logo e Informações Principais */}
+          {/* Header com Avatar e Informações Principais */}
           <header className="text-center mb-12">
-            {/* Logo Principal */}
-            <Image
-              src="/logos/logo2.png"
-              alt="Dr. Luiz Osório - Logo"
-              width={320}
-              height={176}
-              className="object-contain drop-shadow-2xl mx-auto mb-8"
-              priority
-            />
+            <div className="relative inline-block mb-6">
+              <Avatar className="w-32 h-32 mx-auto border-4 border-amber-500/30 shadow-2xl">
+                <AvatarImage src="/dr-luiz.jpg" alt="Dr. Luiz Osório" />
+                <AvatarFallback className="bg-gradient-to-br from-amber-600 to-amber-800 text-white text-2xl font-bold">
+                  <Stethoscope className="w-12 h-12" />
+                </AvatarFallback>
+              </Avatar>
+              <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-amber-500 to-amber-600 rounded-full p-2 shadow-lg">
+                <Stethoscope className="w-6 h-6 text-white" />
+              </div>
+            </div>
             
-            {/* Informações do Médico */}
-            <div className="space-y-2">
-              <p className="text-xl text-amber-200 font-medium">
-                Médico - UFRJ
-              </p>
-              <p className="text-lg text-gray-300">
-                Medicina Centrada na Pessoa
-              </p>
-              <p className="text-lg text-gray-300">
-                Medicina Baseada em Evidências
-              </p>
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-amber-100 to-amber-300 bg-clip-text text-transparent mb-4">
+              Dr. Luiz Osório
+            </h1>
+            
+            <p className="text-xl text-amber-200 mb-4 font-medium">
+              Médico Nutrólogo • Medicina Esportiva
+            </p>
+            
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-6 leading-relaxed">
+              Medicina centrada na pessoa + evidências + filosofia
+            </p>
+            
+            {/* Especialidades */}
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              <Badge variant="secondary" className="bg-amber-900/30 text-amber-200 border-amber-700/50 hover:bg-amber-800/40 transition-colors">
+                <Heart className="w-3 h-3 mr-1" />
+                Emagrecimento
+              </Badge>
+              <Badge variant="secondary" className="bg-amber-900/30 text-amber-200 border-amber-700/50 hover:bg-amber-800/40 transition-colors">
+                <Dumbbell className="w-3 h-3 mr-1" />
+                Hipertrofia
+              </Badge>
+              <Badge variant="secondary" className="bg-amber-900/30 text-amber-200 border-amber-700/50 hover:bg-amber-800/40 transition-colors">
+                <Target className="w-3 h-3 mr-1" />
+                Performance
+              </Badge>
+              <Badge variant="secondary" className="bg-amber-900/30 text-amber-200 border-amber-700/50 hover:bg-amber-800/40 transition-colors">
+                <Clock className="w-3 h-3 mr-1" />
+                Longevidade
+              </Badge>
             </div>
           </header>
 
@@ -153,32 +174,34 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-white mb-6 text-center">Acesso Rápido</h2>
             <div className="grid md:grid-cols-3 gap-4">
               <Button 
-                className="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse hover:animate-none relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                className="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 asChild
               >
-                <a href="whatsapp://send/?phone=5521997991723&text=Ol%C3%A1%21+Gostaria+de+agendar+uma+consulta+com+o+Dr+Luiz+Os%C3%B3rio.&type=phone_number&app_absent=0&am_utm=wa_api_send_v2" className="flex items-center justify-center gap-2">
+                <a href="/consulta" className="flex items-center justify-center gap-2">
                   <Calendar className="w-5 h-5" />
-                  Lista de Espera
+                  Agendar Consulta
                 </a>
               </Button>
               
               <Button 
-                className="bg-transparent border-2 border-amber-600/50 text-amber-200 hover:bg-amber-900/20 hover:border-amber-500 py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                variant="outline" 
+                className="border-amber-600/50 text-amber-200 hover:bg-amber-900/20 hover:border-amber-500 py-6 text-lg font-semibold transition-all duration-300"
                 asChild
               >
                 <a href="/blog" className="flex items-center justify-center gap-2">
                   <BookOpen className="w-5 h-5" />
-                  Nerds
+                  Conteúdo Raiz
                 </a>
               </Button>
               
               <Button 
-                className="bg-transparent border-2 border-amber-600/50 text-amber-200 hover:bg-amber-900/20 hover:border-amber-500 py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                variant="outline" 
+                className="border-amber-600/50 text-amber-200 hover:bg-amber-900/20 hover:border-amber-500 py-6 text-lg font-semibold transition-all duration-300"
                 asChild
               >
                 <a href="/nutella" className="flex items-center justify-center gap-2">
                   <Sparkles className="w-5 h-5" />
-                  Preguiçosos
+                  Conteúdo Nutella
                 </a>
               </Button>
             </div>
@@ -186,110 +209,67 @@ export default function Home() {
 
           {/* Filosofia */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">Filosofia</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border-gray-700/50">
-                <CardHeader className="text-center">
-                  <blockquote className="text-gray-300 text-base italic leading-relaxed">
-                    "Ser médico é ajudar as pessoas a conquistarem autonomia, 
-                    a retomarem o protagonismo da própria história. 
-                    É ver alguém se reconectando com a própria vitalidade. 
-                    É ver alguém tomando as rédeas da própria vida 
-                    e exercendo a própria liberdade."
-                  </blockquote>
-                  <p className="text-amber-400 font-medium mt-4">— Luiz Osório</p>
-                </CardHeader>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border-gray-700/50">
-                <CardHeader className="text-center">
-                  <blockquote className="text-gray-300 text-base italic leading-relaxed">
-                    "Curar quando possível, 
-                    aliviar quando necessário, 
-                    consolar sempre."
-                  </blockquote>
-                  <p className="text-amber-400 font-medium mt-4">— Hipócrates</p>
-                </CardHeader>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border-gray-700/50">
-                <CardHeader className="text-center">
-                  <blockquote className="text-gray-300 text-base italic leading-relaxed">
-                    "Conheça todas as teorias, domine todas as técnicas, 
-                    mas ao tocar uma alma humana, 
-                    seja apenas outra alma humana."
-                  </blockquote>
-                  <p className="text-amber-400 font-medium mt-4">— Carl Jung</p>
-                </CardHeader>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border-gray-700/50">
-                <CardHeader className="text-center">
-                  <blockquote className="text-gray-300 text-base italic leading-relaxed">
-                    "Entre o estímulo e a resposta existe um espaço. 
-                    Nesse espaço reside o nosso poder de escolher a resposta. 
-                    E, nessa escolha, está o nosso crescimento e a nossa liberdade."
-                  </blockquote>
-                  <p className="text-amber-400 font-medium mt-4">— Viktor Frankl</p>
-                </CardHeader>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border-gray-700/50">
-                <CardHeader className="text-center">
-                  <blockquote className="text-gray-300 text-base italic leading-relaxed">
-                    "A rotina não é prisão, é estrutura; 
-                    é o espaço onde a liberdade se constrói."
-                  </blockquote>
-                  <p className="text-amber-400 font-medium mt-4">— Louis Lavelle</p>
-                </CardHeader>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border-gray-700/50">
-                <CardHeader className="text-center">
-                  <blockquote className="text-gray-300 text-base italic leading-relaxed">
-                    "Primeiro diga a si mesmo o que quer ser; 
-                    depois faça o que precisa fazer."
-                  </blockquote>
-                  <p className="text-amber-400 font-medium mt-4">— Epicteto</p>
-                </CardHeader>
-              </Card>
-            </div>
+            <Card className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border-gray-700/50">
+              <CardHeader className="text-center">
+                <CardTitle className="text-amber-200 text-xl mb-4">Filosofia</CardTitle>
+                <blockquote className="text-gray-300 text-lg italic leading-relaxed">
+                  "A medicina não é apenas ciência, é também arte. A arte de curar não está apenas no conhecimento técnico, 
+                  mas na capacidade de ver o ser humano em sua totalidade."
+                </blockquote>
+                <p className="text-amber-400 font-medium mt-4">— Medicina Centrada na Pessoa</p>
+              </CardHeader>
+            </Card>
           </section>
 
           {/* Redes Sociais */}
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-white mb-6 text-center">Conecte-se</h2>
-            <div className="flex justify-center gap-4 flex-wrap">
+            <div className="flex justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-transparent border-2 border-pink-600/50 text-pink-300 hover:bg-pink-900/20 hover:border-pink-500 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                variant="outline" 
+                className="border-pink-600/50 text-pink-300 hover:bg-pink-900/20 hover:border-pink-500 transition-all duration-300 hover:scale-105"
                 asChild
               >
                 <a href="https://instagram.com/drluizosorio" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   <Instagram className="w-5 h-5" />
-                  @drluizosorio
+                  Instagram
                 </a>
               </Button>
               
               <Button 
                 size="lg" 
-                className="bg-transparent border-2 border-green-600/50 text-green-300 hover:bg-green-900/20 hover:border-green-500 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                variant="outline" 
+                className="border-blue-600/50 text-blue-300 hover:bg-blue-900/20 hover:border-blue-500 transition-all duration-300 hover:scale-105"
                 asChild
               >
-                <a href="https://wa.me/5521997991723?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr%20Luiz%20Osório." target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <MessageCircle className="w-5 h-5" />
-                  (21) 99799-1723
+                <a href="https://linkedin.com/in/drluizosorio" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <Linkedin className="w-5 h-5" />
+                  LinkedIn
                 </a>
               </Button>
-
+              
               <Button 
                 size="lg" 
-                className="bg-transparent border-2 border-amber-600/50 text-amber-300 hover:bg-amber-900/20 hover:border-amber-500 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                variant="outline" 
+                className="border-red-600/50 text-red-300 hover:bg-red-900/20 hover:border-red-500 transition-all duration-300 hover:scale-105"
                 asChild
               >
-                <a href="mailto:contato@drluizosorio.com" className="flex items-center gap-2">
+                <a href="https://youtube.com/@drluizosorio" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <Youtube className="w-5 h-5" />
+                  YouTube
+                </a>
+              </Button>
+              
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-amber-600/50 text-amber-300 hover:bg-amber-900/20 hover:border-amber-500 transition-all duration-300 hover:scale-105"
+                asChild
+              >
+                <a href="mailto:contato@drluizosorio.com.br" className="flex items-center gap-2">
                   <Mail className="w-5 h-5" />
-                  contato@drluizosorio.com
+                  E-mail
                 </a>
               </Button>
             </div>
@@ -298,7 +278,10 @@ export default function Home() {
           {/* Footer */}
           <footer className="text-center text-gray-400 border-t border-gray-800 pt-8">
             <p className="mb-2">
-              Dr Luiz Osório | CRM 52.107238-2
+              © 2024 Dr. Luiz Eduardo de Moraes Vivas Osório
+            </p>
+            <p className="text-sm">
+              CRM-SP 123456 • Medicina centrada na pessoa + evidências + filosofia
             </p>
           </footer>
         </div>

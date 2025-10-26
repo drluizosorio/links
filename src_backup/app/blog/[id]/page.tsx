@@ -234,7 +234,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   : "bg-gradient-to-r from-pink-500 to-rose-600 text-white"
               } border-0`}>
                 <IconComponent className="w-3 h-3 mr-1" />
-                {post.content === "raiz" ? "Nerds" : "Preguiçosos"}
+                {post.content === "raiz" ? "Conteúdo Raiz" : "Conteúdo Nutella"}
               </Badge>
               <Badge variant="outline">
                 {post.category}
@@ -327,7 +327,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               asChild
             >
               <Link href={post.content === "raiz" ? "/nutella" : "/blog"}>
-                {post.content === "raiz" ? "Preguiçosos" : "Nerds"}
+                {post.content === "raiz" ? "Conteúdo Nutella" : "Conteúdo Raiz"}
               </Link>
             </Button>
           </div>
